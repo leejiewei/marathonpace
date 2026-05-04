@@ -1,0 +1,27 @@
+// Version: 1.0.0
+type GpxPoint__802301794 =
+  {lat : Float; lon : Float; timestamp : Timestamp__301639476};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type RunId__720644870 = Nat;
+type Run__619401280 =
+  {
+    avgPaceSecsPerKm : Float;
+    durationSeconds : Int;
+    endTime : Timestamp__301639476;
+    gpxPoints : [GpxPoint__802301794];
+    id : RunId__720644870;
+    maxSpeedMps : Float;
+    startTime : Timestamp__301639476;
+    totalDistanceMeters : Float
+  };
+type Timestamp__301639476 = Int;
+actor {
+  stable runCounter : {var value : Nat};
+  stable runs :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Run__619401280]];
+      var elementIndex : Nat__490723111
+    }
+};

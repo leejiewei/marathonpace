@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "General Sans", sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+    --radius: 0.625rem;
+
+    --background: 0.12 0 0;
+    --foreground: 0.92 0 0;
+    --card: 0.18 0 0;
+    --card-foreground: 0.92 0 0;
+    --popover: 0.22 0 0;
+    --popover-foreground: 0.92 0 0;
+
+    --primary: 0.75 0.18 130;
+    --primary-foreground: 0.12 0 0;
+
+    --secondary: 0.7 0.2 200;
+    --secondary-foreground: 0.12 0 0;
+    --muted: 0.28 0 0;
+    --muted-foreground: 0.65 0 0;
+
+    --accent: 0.75 0.18 130;
+    --accent-foreground: 0.12 0 0;
+
+    --destructive: 0.6 0.25 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.25 0 0;
+    --input: 0.25 0 0;
+    --ring: 0.75 0.18 130;
+
+    --chart-1: 0.75 0.18 130;
+    --chart-2: 0.7 0.2 200;
+    --chart-3: 0.65 0.18 90;
+    --chart-4: 0.72 0.16 40;
+    --chart-5: 0.68 0.22 320;
+
+    --sidebar: 0.18 0 0;
+    --sidebar-foreground: 0.92 0 0;
+    --sidebar-primary: 0.75 0.18 130;
+    --sidebar-primary-foreground: 0.12 0 0;
+    --sidebar-accent: 0.7 0.2 200;
+    --sidebar-accent-foreground: 0.12 0 0;
+    --sidebar-border: 0.25 0 0;
+    --sidebar-ring: 0.75 0.18 130;
+  }
+
+  .dark {
+    --background: 0.12 0 0;
+    --foreground: 0.92 0 0;
+    --card: 0.18 0 0;
+    --card-foreground: 0.92 0 0;
+    --popover: 0.22 0 0;
+    --popover-foreground: 0.92 0 0;
+
+    --primary: 0.75 0.18 130;
+    --primary-foreground: 0.12 0 0;
+
+    --secondary: 0.7 0.2 200;
+    --secondary-foreground: 0.12 0 0;
+    --muted: 0.28 0 0;
+    --muted-foreground: 0.65 0 0;
+
+    --accent: 0.75 0.18 130;
+    --accent-foreground: 0.12 0 0;
+
+    --destructive: 0.6 0.25 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.25 0 0;
+    --input: 0.25 0 0;
+    --ring: 0.75 0.18 130;
+
+    --chart-1: 0.75 0.18 130;
+    --chart-2: 0.7 0.2 200;
+    --chart-3: 0.65 0.18 90;
+    --chart-4: 0.72 0.16 40;
+    --chart-5: 0.68 0.22 320;
+
+    --sidebar: 0.18 0 0;
+    --sidebar-foreground: 0.92 0 0;
+    --sidebar-primary: 0.75 0.18 130;
+    --sidebar-primary-foreground: 0.12 0 0;
+    --sidebar-accent: 0.7 0.2 200;
+    --sidebar-accent-foreground: 0.12 0 0;
+    --sidebar-border: 0.25 0 0;
+    --sidebar-ring: 0.75 0.18 130;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stat-display {
+    font-family: var(--font-mono);
+    font-size: 1.875rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: oklch(var(--primary));
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: oklch(var(--muted-foreground));
+  }
+
+  .live-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: oklch(var(--primary) / 0.1);
+    color: oklch(var(--primary));
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .live-indicator::before {
+    content: "";
+    display: block;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: oklch(var(--primary));
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .warning-banner {
+    padding: 1rem;
+    border-left: 4px solid oklch(var(--destructive));
+    background-color: oklch(var(--destructive) / 0.1);
+    color: oklch(var(--destructive));
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.4;
+    }
+  }
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}

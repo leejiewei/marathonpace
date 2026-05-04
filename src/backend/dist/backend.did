@@ -1,0 +1,64 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type WeatherResult = 
+ record {
+   humidity: int;
+   temperature: float64;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type Timestamp = int;
+type RunInput = 
+ record {
+   avgPaceSecsPerKm: float64;
+   durationSeconds: int;
+   endTime: Timestamp;
+   gpxPoints: vec GpxPoint;
+   maxSpeedMps: float64;
+   startTime: Timestamp;
+   totalDistanceMeters: float64;
+ };
+type RunId = nat;
+type Run = 
+ record {
+   avgPaceSecsPerKm: float64;
+   durationSeconds: int;
+   endTime: Timestamp;
+   gpxPoints: vec GpxPoint;
+   id: RunId;
+   maxSpeedMps: float64;
+   startTime: Timestamp;
+   totalDistanceMeters: float64;
+ };
+type GpxPoint = 
+ record {
+   lat: float64;
+   lon: float64;
+   timestamp: Timestamp;
+ };
+service : {
+  deleteRun: (id: RunId) -> (bool);
+  fetchWeather: (lat: float64, lon: float64) -> (WeatherResult);
+  getAllRuns: () -> (vec Run) query;
+  getRunById: (id: RunId) -> (opt Run) query;
+  saveRun: (input: RunInput) -> (Run);
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+}

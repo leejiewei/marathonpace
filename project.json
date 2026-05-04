@@ -1,0 +1,22 @@
+{
+  "overview": "A marathon training companion app with live GPS tracking, real-time weather-aware pace recommendations, a built-in music player with in-run controls, and a full run history with detailed stats.",
+  "features": [
+    "Live GPS route tracking with real-time speed, distance, and elapsed time",
+    "Smart Pace Adjuster: pulls live weather data and warns you to slow down in high heat or humidity",
+    "In-run music player with previous/next track controls",
+    "Run history with detailed stats for every session",
+    "Persistent run storage — all your data saved across sessions"
+  ],
+  "category": "health-fitness",
+  "tags": [
+    "marathon",
+    "running",
+    "gps",
+    "fitness",
+    "music",
+    "weather",
+    "pace",
+    "tracker"
+  ],
+  "last_updated": "2026-05-04T04:34:59.366Z"
+}
